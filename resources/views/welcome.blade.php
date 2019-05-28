@@ -92,7 +92,7 @@
             return actions.request.post('/api/create-payment')
                 .then(function(res) {
                     // 3. Return res.id from the response
-                    console.log(res);
+
                     return res.id;
                 });
         },
@@ -100,6 +100,8 @@
         // 1. Add an onAuthorize callback
         onAuthorize: function(data, actions) {
             // 2. Make a request to your server
+
+            console.log(data.paymentID, data.payerID);
             return actions.request.post('/api/execute-payment', {
                 paymentID: data.paymentID,
                 payerID:   data.payerID
